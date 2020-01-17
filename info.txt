@@ -1,0 +1,40 @@
+-- For Windows, download MySQL Community Server (.zip)
+-- 1. Open 2 Terminals
+-- 2. The First Terminal, initialize database, and password
+--    \magic\mysql\bin\mysqld.exe --initialize --console
+--    
+-- 3. The First Terminal, start MySQL server
+--    \magic\mysql\bin\mysqld.exe --console
+-- 4. The Second Terminal, use MySQL client
+--    \magic\mysql\bin\mysql.exe --user root --password
+-- 5. The Second Terminal, change root password
+--    alter user root@localhost identified by 'p@ssword';
+-- For Ubuntu,
+-- sudo apt install mysql-server
+-- sudo mysql
+
+drop database if exists magic;
+create database magic default charset 'utf8';
+drop user if exists james;
+create user james identified with mysql_native_password
+  by 'bond';
+grant all on magic.* to james;
+
+use magic;
+create table product
+(
+  id      int unique not null auto_increment,
+  code    varchar(80) unique not null,
+  name    varchar(200) not null,
+  detail  varchar(2000),
+  price   float,
+  available int
+);
+
+insert into product(code, name, detail,price,available)
+  values('10000-00001', 'Sony a7 III', 
+        'Full-Frame Mirrorless', 65000, 7);
+insert into product(code, name, detail,price,available)
+  values('10000-00002', 'Canon EOS REBEL T7i',
+        'Built-in WIFI, NFC and Bluetooth', 22000, 6);
+
