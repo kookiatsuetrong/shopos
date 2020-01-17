@@ -38,3 +38,16 @@ insert into product(code, name, detail,price,available)
   values('10000-00002', 'Canon EOS REBEL T7i',
         'Built-in WIFI, NFC and Bluetooth', 22000, 6);
 
+use magic;
+create table magic.member
+(
+  id       int unique not null auto_increment,
+  email    varchar(80) unique not null,
+  password varchar(200) not null,
+  name     varchar(200) not null,
+  type     varchar(200) not null default 'member'
+);
+
+insert into magic.member(email,password,name,type)
+  value('james@bond.com', sha2('james123', 512),
+        'James Bond', 'administrator');
