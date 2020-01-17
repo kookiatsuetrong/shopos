@@ -1,0 +1,12 @@
+<%
+if (result.length == 0) {
+    result.push( { name: 'Not Found', 
+                    detail: '', 
+                    available: '', price:''})
+}
+%>
+
+<b>Product: </b>   <%= result[0].name      %> <br>
+<b>Detail: </b>    <%= result[0].detail    %> <br>
+<b>Available: </b> <%= result[0].available %> <br>
+<b>Price: </b>     <%= result[0].price     %>

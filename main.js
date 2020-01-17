@@ -43,5 +43,11 @@ function showLogInPage(req, res) {
     res.render('login.html')
 }
 function showDetail(req, res) {
-    res.render('detail.html')
+    var sql  = 'select * from product where id=?'
+    var data = [ req.query.id ]
+    pool.query(sql, data, function(error, data) {
+        var model = { }
+        model.result = data
+        res.render('detail.html', model)
+    })
 }
