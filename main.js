@@ -13,6 +13,7 @@ server.get('/api/list-product', listProduct)
 server.get('/', showHome)
 server.get('/login', showLogInPage)
 server.get('/detail', showDetail)
+server.get('/search', showSearchResult)
 
 function listProduct(req, res) {
     pool.query('select * from product', function(error, data) {
@@ -21,13 +22,20 @@ function listProduct(req, res) {
 }
 
 function showHome(req, res) {
+    res.render('index.html')
+}
+
+function showSearchResult(req, res) {
+    var model = { }
+    model.result = [ ]
     if (req.query.text == null) {
-        res.render('index.html')
+        res.render('search-result.html', model)
     } else {
         var sql  = 'select * from product where name like ?'
         var data = [ '%' + req.query.text + '%' ]
         pool.query(sql, data, function(error, data) {
-            res.send(data)            
+            model.result = data
+            res.render('search-result.html', model)
         })
     }
 }
