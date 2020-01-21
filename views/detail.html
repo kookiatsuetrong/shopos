@@ -1,3 +1,5 @@
+<%- include('header.html') %>
+
 <%
 if (result.length == 0) {
     result.push( { name: 'Not Found', 
@@ -6,7 +8,14 @@ if (result.length == 0) {
 }
 %>
 
+<main class='container'>
 <b>Product: </b>   <%= result[0].name      %> <br>
 <b>Detail: </b>    <%= result[0].detail    %> <br>
 <b>Available: </b> <%= result[0].available %> <br>
 <b>Price: </b>     <%= result[0].price     %>
+
+<br>
+<a href='javascript:history.back()'>Go Back</a>
+</main>
+
+<%- include('footer.html') %>

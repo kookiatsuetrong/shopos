@@ -9,12 +9,25 @@ var server  = express() // create server
 server.engine('html', ejs.renderFile)
 var readBody = express.urlencoded({extended:false})
 server.listen(2000)
+// server.use(showTime)
 server.get('/api/list-product', listProduct)
 server.get('/', showHome)
-server.get('/login', showLogInPage)
+server.get('/login', showTime, showLogInPage)
 server.post('/login', readBody, checkPassword)
 server.get('/detail', showDetail)
 server.get('/search', showSearchResult)
+server.use( express.static('public') )
+server.use(showError)
+
+function showError(req, res) {
+    res.render('error.html')
+}
+
+function showTime(req, res, next) {
+    var d = new Date()
+    console.log(d)
+    next() // call the next function
+}
 
 function checkPassword(req, res) {
     var sql  = 'select * from magic.member where ' +

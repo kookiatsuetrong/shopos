@@ -1,13 +1,19 @@
-<form method='post'>
-    <input name='email' placeholder='Your Email'>
-    <input name='password' placeholder='Your Password' 
-        type='password'>
-    <button>OK</button>
-</form>
+<%- include('header.html') %>
 
-<!--
+<main class='container'>
+    <form method='post'>
+        <h3>Log In</h3>
+        <input name='email' 
+            placeholder='Your Email'
+            class='form-control'
+            autofocus>
+        <input name='password' 
+            placeholder='Your Password' 
+            type='password'
+            class='form-control'>
+        <button class='btn btn-primary'>Log In</button>
+        <a href='/'>Cancel</a>
+    </form>
+</main>
 
-
-    alter table magic.member add name varchar(200);
-    update magic.member set name = 'James Bond' where id =1;
--->
+<%- include('footer.html') %>

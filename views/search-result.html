@@ -1,3 +1,6 @@
+<%- include('header.html') %>
+
+<main class='container'>
 Search Page:
 
 <%  for (var i in result) { %>
@@ -5,3 +8,7 @@ Search Page:
         <%= result[i].name %> / <%= result[i].price %>
         <a href='/detail?id=<%= result[i].id %>'>View</a>
 <%  } %>
+
+</main>
+
+<%- include('footer.html') %>

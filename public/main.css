@@ -1,0 +1,42 @@
+:root {
+    --main-background: #eef;
+    --footer-background: #abc;
+}
+
+body {
+    background: var(--main-background);
+}
+
+input {
+    margin-bottom: 6px;
+}
+
+main {
+    min-height: 100vh;
+}
+
+footer {
+    min-height: 400px;
+    background: var(--footer-background)
+}
+
+.box {
+    background-color: white;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.img-fluid {
+    width: 100%;
+    border-width: 2px;
+    border-color: orange;
+    border-style: solid;
+    opacity: 0.5;
+    transition: opacity 0.5s ease-in,
+                border 0.5s linear;
+}
+.img-fluid:hover,
+.img-fluid:active {
+    border: 2px red dotted;
+    opacity: 1.0;
+}

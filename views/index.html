@@ -1,12 +1,18 @@
-<!doctype html>
-<html>
-    <head>
+<%- include('header.html') %>
 
-    </head>
-    <body>
+<main class='container'>
+
+    <div class='box'>
+        <p>Welcome to Shop OS home page.</p>
         <form action='/search'>
             <input name='text'>
             <button>Search</button>
         </form>
-    </body>
-</html>
+        <ol>
+            <li>Latte</li>
+            <li>Mocha</li>
+        </ol>
+    </div>
+</main>
+
+<%- include('footer.html') %>
