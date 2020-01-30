@@ -8,9 +8,12 @@ var pool    = mysql.createPool(source)
 var server  = express() // create server
 server.engine('html', ejs.renderFile)
 var readBody = express.urlencoded({extended:false})
-server.listen(2000)
+server.listen(2020)
 // server.use(showTime)
+server.use(allow)
 server.get('/api/list-product', listProduct)
+server.get('/api/search', searchProduct)
+server.get('/api/query', queryProduct)
 server.get('/', showHome)
 server.get('/login', showTime, showLogInPage)
 server.post('/login', readBody, checkPassword)
@@ -18,6 +21,29 @@ server.get('/detail', showDetail)
 server.get('/search', showSearchResult)
 server.use( express.static('public') )
 server.use(showError)
+
+function queryProduct(req,res) {
+  var sql  = 'select * from product where code like ?'
+  var data = [ '%' + req.query.code + '%']
+  pool.query(sql, data, function(e,r) {
+    res.send(r)
+  }) 
+}
+
+function searchProduct(req,res) {
+  var sql  = 'select * from product where code like ? or ' +
+             ' name like ? or detail like ?'
+  var data = '%' + req.query.text + '%'
+  var info = [data,data,data]
+  pool.query(sql,info,function(e,r) {
+    res.send(r)
+  })
+}
+
+function allow(req,res,next) {
+  res.set('Access-Control-Origin-Allow', '*')
+  next()
+}
 
 function showError(req, res) {
     res.render('error.html')
