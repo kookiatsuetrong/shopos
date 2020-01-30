@@ -30,13 +30,27 @@ create table product
   price   float,
   available int
 );
-
+/*
 insert into product(code, name, detail,price,available)
   values('10000-00001', 'Sony a7 III', 
         'Full-Frame Mirrorless', 65000, 7);
 insert into product(code, name, detail,price,available)
   values('10000-00002', 'Canon EOS REBEL T7i',
         'Built-in WIFI, NFC and Bluetooth', 22000, 6);
+*/
+
+insert into product(code, name, detail,price,available)
+values('885170294646','PANASONIC Lumix G85 4K Digital Camera',
+       '12-60mm Power O.I.S. Lens, 16 Megapixel Mirrorless Camera, 5 Axis In-Body Dual Image Stabilization, 3-Inch Tilt and Touch LCD, DMC-G85MK (Black)', 
+       25900, 5);
+insert into product(code, name, detail,price,available)
+values('885170251663','Panasonic LUMIX G VARIO 45-150mm Lens',
+       'Mirrorless Camera Lens with Optical Stabilizer, Micro Four Thirds Mount, H-FS45150AK (USA Black)', 
+       12900, 4);
+insert into product(code, name, detail,price,available)
+values('885170310964','PANASONIC LUMIX G II Vario Lens 100-300MM',
+       'Mirrorless Camera Lens (Micro Four Thirds), Power O.I.S, H-FSA100300 (USA Black)', 
+       24900, 2);
 
 use magic;
 create table magic.member
